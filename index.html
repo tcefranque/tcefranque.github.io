@@ -3,59 +3,161 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website People</title>
+    <title>O Meu Portfólio Profissional</title>
     <style>
-        /* Estilos básicos para deixar o site bonito */
+        /* Estilos e Cores Modernas */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f4f7f6;
+            background-color: #f0f4f8;
             color: #333;
             margin: 0;
-            padding: 0;
+            padding: 40px 20px;
             display: flex;
             justify-content: center;
-            align-items: center;
-            min-height: 100vh;
         }
-        .cartao {
+        .container {
             background: white;
-            padding: 30px;
-            border-radius: 15px;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            max-width: 650px;
+            width: 100%;
+        }
+        /* Foto e Cabeçalho */
+        .perfil {
             text-align: center;
-            max-width: 400px;
-            width: 90%;
+            margin-bottom: 30px;
+        }
+        .perfil img {
+            width: 130px;
+            height: 130px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid #3498db;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
         }
         h1 {
             color: #2c3e50;
-            margin-bottom: 10px;
+            margin: 15px 0 5px 0;
+            font-size: 2em;
+        }
+        .subtitulo {
+            color: #7f8c8d;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+        }
+        /* Secções do Currículo */
+        h2 {
+            color: #2980b9;
+            border-bottom: 2px solid #3498db;
+            padding-bottom: 5px;
+            margin-top: 35px;
+            font-size: 1.4em;
         }
         p {
-            font-size: 1.1em;
             line-height: 1.6;
             color: #555;
         }
-        .botao {
+        .item {
+            margin-bottom: 20px;
+            padding-left: 15px;
+            border-left: 3px solid #bdc3c7;
+        }
+        .item-titulo {
+            font-weight: bold;
+            color: #2c3e50;
+            margin: 0;
+        }
+        .item-detalhes {
+            font-size: 0.9em;
+            color: #7f8c8d;
+            margin: 3px 0 8px 0;
+        }
+        /* Redes Sociais */
+        .redes-sociais {
+            text-align: center;
+            margin-top: 25px;
+        }
+        .botao-rede {
             display: inline-block;
-            margin-top: 20px;
-            padding: 10px 20px;
+            margin: 5px;
+            padding: 10px 18px;
             background-color: #3498db;
             color: white;
             text-decoration: none;
-            border-radius: 5px;
-            transition: background 0.3s;
+            border-radius: 25px;
+            font-weight: bold;
+            transition: background 0.3s, transform 0.2s;
         }
-        .botao:hover {
+        .botao-rede:hover {
             background-color: #2980b9;
+            transform: translateY(-2px);
         }
     </style>
 </head>
 <body>
 
-    <div class="cartao">
-        <h1>Hello, World!👋</h1>
-        <p>Welcome to the my new website living in GitHub Pages.</p>
-        <a href="#" class="botao">Saber Mais</a>
+    <div class="container">
+        <!-- 1. FOTO, NOME E BIOGRAFIA -->
+        <div class="perfil">
+            <!-- Substitua o link abaixo pela foto que deseja usar -->
+            <img src="https://unsplash.com" alt="Sua Foto de Perfil">
+            <h1>O Seu Nome Aqui</h1>
+            <p class="subtitulo">A Sua Profissão / Área de Atuação</p>
+            <p>Escreva aqui um breve resumo sobre quem você é, as suas principais competências, paixões e o que o motiva no ambiente de trabalho.</p>
+        </div>
+
+        <!-- 2. PERCURSO ACADÉMICO -->
+        <h2>Percurso Académico</h2>
+        
+        <div class="item">
+            <p class="item-titulo">Degree in Mathematics and Physics</p>
+            <p class="item-detalhes">Universidade Pedagógicab de Moçambique| 2010 - 2013</p>
+            <p> Completing a degree in Mathematics and Physics, from the Pedagogical University of Mozambique, I was an outstanding student in research areas such as Mathematical Analysis, Geometries and introductory Probability. At the end of the course, I developed a work entitled ''Application of Homotheties in real life'' which consisted of relating the mathematical concepts of Thales' theorem, Triangle congruency criteria and Similarity of triangles with everyday geometric entities in the fight for survival.</p>
+        </div>
+
+        <div class="item">
+            <p class="item-titulo">Master's in Statistics and Probability</p>
+            <p class="item-detalhes"> University of Brasilia|2023</p>
+            <p>I completed my master's degree in Statistics at the University of Brasília, I was highlighted in research lines such as Statistical Inference, Mathematical Statistics and Survival Analysis. To complete the course, I developed a work (final dissertation) with the title: ''Proportional Survival Logistics Regression Models for discrete data in the presence of censorship''</p>
+        </div>
+
+   <div class="item">
+            <p class="item-titulo">Ph.D candidate in Statistics and Probability</p>
+            <p class="item-detalhes"> University of Federal de Minas Gerais|Now</p>
+            <p>I am currently a candidate for the Ph.D in Statistics and Probability at the Federal University of Minas Gerais. I am currently developing the final thesis entitled: ''M -quantile Regression Estimator to Periodic Spatio-Temporal Poisson -INGARCH model for Count Data''. The Estimator will be applied in real data to model epidemiological situations such as cases of malaria and Dengue as well as other areas that involve count data.</p>
+        </div>
+        
+        <!-- 3. PERCURSO PROFISSIONAL -->
+        <h2>Percurso Profissional</h2>
+
+        <div class="item">
+            <p class="item-titulo">University Professor</p>
+            <p class="item-detalhes">University of Federal de Minas Gerais|2025-2026</p>
+            <p>Professor of Statistics and Probability subjects in Geography, Computer Engineering, Automation and Systems courses in undergraduate courses.</p>
+        </div>
+
+        <div class="item">
+            <p class="item-titulo">University Professor </p>
+            <p class="item-detalhes">University of Save, Unisave|2021-2026</p>
+            <p>Professor of Mathematics and Statistics Department -FCNE</p>
+        </div>
+
+        div class="item">
+            <p class="item-titulo">Middle and elementary school teacher</p>
+            <p class="item-detalhes">Ministery of Education and Culture|2015-2020</p>
+            <p>Mathematics Teacher.</p>
+        </div>
+
+        <!-- 4. REDES SOCIAIS -->
+        <h2>Contacts & Social media</h2>
+        <div class="redes-sociais">
+            <!-- Substitua os '#' pelos links reais dos seus perfis -->
+            <a href="https://www.linkedin.com/in/tiago-chandiona-franque-51a6a01b4?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="botao-rede"> LinkedIn </a>
+            <a href="tiago1987" target="_blank" class="botao-rede">Instagram</a>
+            <a href="tiagochandionaernestofranque@gmail.com" target="_blank" class="botao-rede">E-mail</a>
+            <a href="https://wwws.cnpq.br/cvlattesweb/PKG_MENU.menu?f_cod=2DEB06FA6AFE8C020D5A877F288DE634#" target ="_blank" class="botao-rede"> lattes</a>
+        </div>
     </div>
 
 </body>
