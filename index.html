@@ -3,13 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Professional Portfolio<</title>
+    <title>Tiago Chandiona Franque | Portfolio</title>
+    <!-- Biblioteca de Ícones Font Awesome -->
+    <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Estilos e Cores Modernas */
+        /* Paleta de Cores Académica e Moderna */
         body {
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #f0f4f8;
-            color: #333;
+            background-color: #f4f7f6;
+            color: #2c3e50;
             margin: 0;
             padding: 40px 20px;
             display: flex;
@@ -17,80 +19,92 @@
         }
         .container {
             background: white;
-            padding: 40px;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
-            max-width: 650px;
+            padding: 45px;
+            border-radius: 16px;
+            box-shadow: 0 15px 35px rgba(44, 62, 80, 0.08);
+            max-width: 700px;
             width: 100%;
         }
         /* Foto e Cabeçalho */
         .perfil {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 35px;
         }
         .perfil img {
-            width: 130px;
-            height: 130px;
+            width: 140px;
+            height: 140px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #3498db;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            border: 4px solid #1a365d;
+            box-shadow: 0 6px 15px rgba(0,0,0,0.08);
         }
         h1 {
-            color: #2c3e50;
+            color: #1a365d;
             margin: 15px 0 5px 0;
-            font-size: 2em;
+            font-size: 2.2em;
+            font-weight: 700;
         }
         .subtitulo {
-            color: #7f8c8d;
-            font-size: 1.1em;
+            color: #4a5568;
+            font-size: 1.2em;
+            font-weight: 500;
             margin-bottom: 20px;
         }
         /* Secções do Currículo */
         h2 {
-            color: #2980b9;
-            border-bottom: 2px solid #3498db;
-            padding-bottom: 5px;
-            margin-top: 35px;
-            font-size: 1.4em;
+            color: #1a365d;
+            border-bottom: 2px solid #e2e8f0;
+            padding-bottom: 8px;
+            margin-top: 40px;
+            font-size: 1.5em;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
         }
         p {
-            line-height: 1.6;
-            color: #555;
+            line-height: 1.7;
+            color: #4a5568;
+            font-size: 1.05em;
         }
         .item {
-            margin-bottom: 20px;
-            padding-left: 15px;
-            border-left: 3px solid #bdc3c7;
+            margin-bottom: 25px;
+            padding-left: 18px;
+            border-left: 3px solid #3182ce;
         }
         .item-titulo {
-            font-weight: bold;
-            color: #2c3e50;
+            font-weight: 600;
+            color: #2d3748;
             margin: 0;
+            font-size: 1.15em;
         }
         .item-detalhes {
-            font-size: 0.9em;
-            color: #7f8c8d;
-            margin: 3px 0 8px 0;
+            font-size: 0.95em;
+            color: #718096;
+            margin: 4px 0 10px 0;
+            font-style: italic;
         }
-        /* Redes Sociais */
+        /* Redes Sociais e Contactos com Ícones */
         .redes-sociais {
             text-align: center;
-            margin-top: 25px;
+            margin-top: 30px;
         }
         .botao-rede {
             display: inline-block;
-            margin: 5px;
-            padding: 10px 18px;
-            background-color: #3498db;
+            margin: 6px;
+            padding: 12px 22px;
+            background-color: #1a365d;
             color: white;
             text-decoration: none;
-            border-radius: 25px;
-            font-weight: bold;
+            border-radius: 8px;
+            font-weight: 600;
+            font-size: 0.95em;
             transition: background 0.3s, transform 0.2s;
         }
+        .botao-rede i {
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
         .botao-rede:hover {
-            background-color: #2980b9;
+            background-color: #2b6cb0;
             transform: translateY(-2px);
         }
     </style>
@@ -100,32 +114,31 @@
     <div class="container">
         <!-- 1. FOTO, NOME E BIOGRAFIA -->
         <div class="perfil">
-            <!-- Substitua o link abaixo pela foto que deseja usar -->
-            <img src="20261021_170459.jpg" alt="Sua Foto de Perfil">
+            <img src="20261021_170459.jpg" alt="Tiago Chandiona Ernesto Franque">
             <h1>Tiago Chandiona Ernesto Franque</h1>
-            <p class="subtitulo">Professor/ StatisticsandProbability</p>
-            <p>My name is Tiago Chandiona Ernesto Franque, of Mozambican nationality, I am a Professor of Statistics and Probability, I work in the areas of advanced research proposing estimation models that can influence management and decision making. Regression Analysis is my favorite area of ​​expertise.</p>
+            <p class="subtitulo">Professor of Statistics and Probability</p>
+            <p>I am a Professor of Statistics and Probability from Mozambique, specializing in advanced research and the development of estimation models tailored to optimize management and decision-making systems. Regression Analysis is my core area of expertise.</p>
         </div>
 
         <!-- 2. PERCURSO ACADÉMICO -->
         <h2>Percurso Académico</h2>
         
         <div class="item">
-            <p class="item-titulo">Degree in Mathematics and Physics</p>
-            <p class="item-detalhes">Universidade Pedagógicab de Moçambique| 2010 - 2013</p>
-            <p> Completing a degree in Mathematics and Physics, from the Pedagogical University of Mozambique, I was an outstanding student in research areas such as Mathematical Analysis, Geometries and introductory Probability. At the end of the course, I developed a work entitled ''Application of Homotheties in real life'' which consisted of relating the mathematical concepts of Thales' theorem, Triangle congruency criteria and Similarity of triangles with everyday geometric entities in the fight for survival.</p>
+            <p class="item-titulo">B.Sc. in Mathematics and Physics</p>
+            <p class="item-detalhes">Universidade Pedagógica de Moçambique | 2010 - 2013</p>
+            <p>Graduated with distinction in core research areas, including Mathematical Analysis, Geometry, and Introductory Probability. Developed a final graduation project titled <em>"Application of Homotheties in Real Life"</em>, which successfully mapped geometric concepts—such as Thales' theorem, triangle congruency, and similarity criteria—to practical spatial problems in everyday human survival contexts.</p>
         </div>
 
         <div class="item">
-            <p class="item-titulo">Master's in Statistics and Probability</p>
-            <p class="item-detalhes"> University of Brasilia|2023</p>
-            <p>I completed my master's degree in Statistics at the University of Brasília, I was highlighted in research lines such as Statistical Inference, Mathematical Statistics and Survival Analysis. To complete the course, I developed a work (final dissertation) with the title: ''Proportional Survival Logistics Regression Models for discrete data in the presence of censorship''</p>
+            <p class="item-titulo">M.Sc. in Statistics and Probability</p>
+            <p class="item-detalhes">University of Brasília (UnB) | 2021 - 2023</p>
+            <p>Specialized in Statistical Inference, Mathematical Statistics, and Survival Analysis. Authored the master's dissertation: <em>"Proportional Survival Logistic Regression Models for Discrete Data in the Presence of Censoring"</em>.</p>
         </div>
 
-   <div class="item">
-            <p class="item-titulo">Ph.D candidate in Statistics and Probability</p>
-            <p class="item-detalhes"> University of Federal de Minas Gerais|Now</p>
-            <p>I am currently a candidate for the Ph.D in Statistics and Probability at the Federal University of Minas Gerais. I am currently developing the final thesis entitled: ''M -quantile Regression Estimator to Periodic Spatio-Temporal Poisson -INGARCH model for Count Data''. The Estimator will be applied in real data to model epidemiological situations such as cases of malaria and Dengue as well as other areas that involve count data.</p>
+        <div class="item">
+            <p class="item-titulo">Ph.D. Candidate in Statistics and Probability</p>
+            <p class="item-detalhes">Federal University of Minas Gerais (UFMG) | Current</p>
+            <p>Currently developing doctoral thesis research titled: <em>"M-quantile Regression Estimator for Periodic Spatio-Temporal Poisson-INGARCH Models for Count Data"</em>. This estimator is designed for real-world applications to accurately model spatio-temporal epidemiological distributions, such as malaria and dengue fever cases, alongside other complex count data applications.</p>
         </div>
         
         <!-- 3. PERCURSO PROFISSIONAL -->
@@ -133,32 +146,74 @@
 
         <div class="item">
             <p class="item-titulo">University Professor</p>
-            <p class="item-detalhes">University of Federal de Minas Gerais|2025-2026</p>
-            <p>Professor of Statistics and Probability subjects in Geography, Computer Engineering, Automation and Systems courses in undergraduate courses.</p>
+            <p class="item-detalhes">Federal University of Minas Gerais (UFMG) | 2025 - 2026</p>
+            <p>Lecturer of Statistics and Probability modules for undergraduate programs in Geography, Computer Engineering, and Automation & Systems Engineering.</p>
         </div>
 
         <div class="item">
-            <p class="item-titulo">University Professor </p>
-            <p class="item-detalhes">University of Save, Unisave|2021-2026</p>
-            <p>Professor of Mathematics and Statistics Department -FCNE</p>
+            <p class="item-titulo">University Professor</p>
+            <p class="item-detalhes">Universidade Save (UniSave) | 2021 - 2026</p>
+            <p>Lecturer within the Department of Mathematics and Statistics – Faculty of Natural Sciences and Mathematics (FCNE).</p>
         </div>
 
-        </div class="item">
-            <p class="item-titulo">Middle and elementary school teacher</p>
-            <p class="item-detalhes">Ministery of Education and Culture|2015-2020</p>
-            <p>Mathematics Teacher.</p>
+        <div class="item">
+            <p class="item-titulo">Middle and High School Teacher</p>
+            <p class="item-detalhes">Ministry of Education and Culture | 2015 - 2020</p>
+            <p>Mathematics Teacher dedicated to fundamental and secondary education levels.</p>
         </div>
 
-        <!-- 4. REDES SOCIAIS -->
-        <h2>Contacts & Social media</h2>
+        <!-- 4. PUBLICAÇÕES E ARTIGOS -->
+        <h2>Publications & Research</h2>
+
+        <div class="item">
+            <p class="item-titulo">M-quantile Regression Estimator for Periodic Spatio-Temporal Poisson-INGARCH Models</p>
+            <p class="item-detalhes">Ph.D. Thesis (In Progress) | Federal University of Minas Gerais</p>
+            <p>Developing a robust spatial-temporal framework to model epidemiological event counts with application to public health data (Malaria and Dengue clusters).</p>
+        </div>
+
+        <div class="item">
+            <p class="item-titulo">Proportional Survival Logistic Regression Models for Discrete Data in the Presence of Censoring</p>
+            <p class="item-detalhes">Master's Dissertation | University of Brasília | 2023</p>
+            <p>Formulated discrete survival methodology focused on handling censored datasets through optimized regression structures.</p>
+        </div>
+
+        <div class="item">
+            <p class="item-titulo">Application of Homotheties in Real Life</p>
+            <p class="item-detalhes">Monograph | Universidade Pedagógica de Moçambique | 2013</p>
+            <p>Investigated practical applications of Thales' Theorem and triangle similarities in basic geometric architectures.</p>
+        </div>
+
+        <!-- 5. CONGRESSOS E EVENTOS -->
+        <h2>Conferences & Academic Events</h2>
+
+        <div class="item">
+            <p class="item-titulo">26º Simpósio Nacional de Probabilidade e Estatística (SINAPE)</p>
+            <p class="item-detalhes">Gramado, RS, Brasil | 2026</p>
+            <p>Participation and engagement with advanced discussions on Probability, Statistical Methods, and Data Science innovations.</p>
+        </div>
+
+        <div class="item">
+            <p class="item-titulo">67ª Região Brasileira da Sociedade Internacional de Biometria (RBrás)</p>
+            <p class="item-detalhes">Brasil | 2023</p>
+            <p>Academic interaction focusing on biometrics, medical statistics, and agricultural experimental data modeling.</p>
+        </div>
+
+        <div class="item">
+            <p class="item-titulo">Seminário de Estatística da UnB</p>
+            <p class="item-detalhes">Universidade de Brasília | 2023</p>
+            <p>Presentation and academic updates concerning theoretical framework improvements in probability distributions and inference models.</p>
+        </div>
+
+        <!-- 6. MONOGRAFIAS ORIENTADAS -->
+        <h2>Academic Advising & Mentorship</h2>
+
+        <div class="item">
+            <p class="item-titulo">Undergraduate Research & Monograph Advising</p>
+            <p class="item-detalhes">Department of Mathematics and Statistics | Universidade Save</p>
+            <p>Supervision and mentorship of undergraduate students in developing their final graduation theses, covering areas such as Linear Models, Applied Statistics, and Data Management strategies.</p>
+            <p style="font-size: 0.9em; color: #718096; margin-top: 5px;">* A list of individual supervised students and completed titles can be cross-verified directly via the official Lattes platform linked below.</p>
+        </div>
+
+        <!-- 7. REDES SOCIAIS E CONTACTOS -->
+        <h2>Contacts & Social Media</h2>
         <div class="redes-sociais">
-            <!-- Substitua os '#' pelos links reais dos seus perfis -->
-            <a href="https://www.linkedin.com/in/tiago-chandiona-franque-51a6a01b4?utm_source=share_via&utm_content=profile&utm_medium=member_android" target="_blank" class="botao-rede"> LinkedIn </a>
-            <a href="tiago1987" target="_blank" class="botao-rede">Instagram</a>
-            <a href="tiagochandionaernestofranque@gmail.com" target="_blank" class="botao-rede">E-mail</a>
-            <a href="https://wwws.cnpq.br/cvlattesweb/PKG_MENU.menu?f_cod=2DEB06FA6AFE8C020D5A877F288DE634#" target ="_blank" class="botao-rede"> lattes</a>
-        </div>
-    </div>
-
-</body>
-</html>
