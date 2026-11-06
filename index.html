@@ -7,11 +7,10 @@
     <!-- Biblioteca de Ícones Font Awesome -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Base e Tipografia Estilo Quarto Dark-Nav */
+        /* Base e Tipografia Estilo Quarto Academic */
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
             background-color: #fafbfc;
-            /* Fundo com efeito de constelação/rede de nós */
             background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M10 10L50 60L100 20L150 80L190 30' stroke='%23e2e8f0' stroke-width='1' fill='none'/%3E%3Ccircle cx='10' cy='10' r='2' fill='%23cbd5e1'/%3E%3Ccircle cx='50' cy='60' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='100' cy='20' r='2' fill='%23cbd5e1'/%3E%3Ccircle cx='150' cy='80' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='190' cy='30' r='2' fill='%23cbd5e1'/%3E%3Cpath d='M20 150L80 120L130 170L180 110' stroke='%23e2e8f0' stroke-width='1' fill='none'/%3E%3Ccircle cx='20' cy='150' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='80' cy='120' r='2' fill='%23cbd5e1'/%3E%3Ccircle cx='130' cy='170' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='180' cy='110' r='2' fill='%23cbd5e1'/%3E%3C/svg%3E");
             color: #333333;
             margin: 0;
@@ -29,7 +28,6 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
             height: 54px;
         }
         .navbar-left {
@@ -38,7 +36,7 @@
             height: 100%;
         }
         
-        /* Sistema de Menu Dropdown */
+        /* Itens do Menu */
         .nav-item {
             position: relative;
             height: 100%;
@@ -55,6 +53,7 @@
             display: flex;
             align-items: center;
             gap: 5px;
+            cursor: pointer;
             transition: color 0.2s, background-color 0.2s;
         }
         .nav-link:hover, .nav-item:hover .nav-link {
@@ -63,16 +62,18 @@
         }
         .nav-link.active {
             color: #ffffff;
+            background-color: #2c3034;
+            font-weight: 600;
         }
 
-        /* Caixa Flutuante do Menu Suspenso */
+        /* Menus Suspensos (Dropdowns) */
         .dropdown-menu {
             display: none;
             position: absolute;
             top: 100%;
             left: 0;
             background-color: #ffffff;
-            min-width: 240px;
+            min-width: 250px;
             box-shadow: 0 8px 16px rgba(0,0,0,0.1);
             border: 1px solid #dee2e6;
             border-radius: 0 0 4px 4px;
@@ -88,27 +89,11 @@
             align-items: center;
             justify-content: space-between;
             font-size: 0.9em;
-            transition: background-color 0.2s, color 0.2s;
         }
         .dropdown-menu a:hover {
             background-color: #f8f9fa;
-            color: #0d6efd;
+            color: #0f766e;
         }
-        .dropdown-header {
-            padding: 6px 20px;
-            font-size: 0.75em;
-            font-weight: 700;
-            text-transform: uppercase;
-            color: #6c757d;
-            letter-spacing: 0.5px;
-        }
-        .dropdown-divider {
-            height: 1px;
-            background-color: #e9ecef;
-            margin: 6px 0;
-        }
-
-        /* Exibe o dropdown ao passar o mouse */
         .nav-item:hover .dropdown-menu {
             display: block;
         }
@@ -123,26 +108,34 @@
             color: #ced4da;
             text-decoration: none;
             font-size: 1.1em;
-            transition: color 0.2s;
         }
         .navbar-right a:hover {
             color: #ffffff;
         }
 
-        /* Estrutura de Conteúdo */
+        /* Contentor e Mecanismo de Abas (Sections) */
         .main-container {
             max-width: 1140px;
             margin: 40px auto;
             padding: 0 20px;
+            min-height: 70vh;
         }
+
+        /* Oculta as secções por padrão, exibe apenas a ativa */
+        .content-section {
+            display: none;
+        }
+        .content-section.active-section {
+            display: block;
+        }
+
+        /* Layout Especial da Aba Lar (Sobre Mim) */
         .top-layout {
             display: grid;
             grid-template-columns: 3fr 1fr;
-            gap: 20px;
+            gap: 30px;
             align-items: start;
         }
-
-        /* Caixa Sobre Mim */
         .profile-card {
             display: flex;
             gap: 40px;
@@ -174,7 +167,7 @@
         .profile-title {
             font-size: 1.4em;
             font-weight: 400;
-            color: #212529;
+            color: #495057;
             margin: 0 0 20px 0;
         }
         .bio-text p {
@@ -182,10 +175,6 @@
             font-size: 1.05em;
             margin-bottom: 18px;
             text-align: justify;
-        }
-        .bio-text a {
-            color: #0d6efd;
-            text-decoration: none;
         }
 
         /* Widget de Localização */
@@ -232,66 +221,80 @@
             cursor: pointer;
         }
 
-        /* Seções Acadêmicas */
-        .curriculum-sections {
-            max-width: 830px;
-            margin-top: 50px;
-        }
+        /* Estilo Padrão para Listas Académicas */
         .academic-section-title {
-            font-size: 1.5em;
+            font-size: 1.8em;
             font-weight: 600;
             border-bottom: 1px solid #dee2e6;
-            padding-bottom: 6px;
-            margin-top: 40px;
-            margin-bottom: 20px;
+            padding-bottom: 8px;
+            margin-bottom: 25px;
+            color: #212529;
         }
         .list-item {
-            margin-bottom: 20px;
+            margin-bottom: 25px;
+            background: #ffffff;
+            padding: 20px;
+            border-radius: 6px;
+            border: 1px solid #e3e6f0;
         }
-        .item-year {
-            font-size: 0.9em;
-            color: #6c757d;
+        .item-tag {
+            display: inline-block;
+            background: #0f766e;
+            color: white;
+            font-size: 0.8em;
+            padding: 3px 8px;
+            border-radius: 4px;
+            font-weight: 500;
+            margin-bottom: 8px;
         }
         .item-main-title {
-            font-size: 1.1em;
+            font-size: 1.2em;
             font-weight: 600;
             color: #212529;
+            margin: 0 0 5px 0;
         }
         .item-institution {
             font-size: 0.95em;
-            color: #495057;
+            color: #6c757d;
+            margin: 0;
         }
     </style>
 </head>
 <body>
 
-    <!-- BARRA DE NAVEGAÇÃO SUPERIOR DINÂMICA COM ARQUIVOS -->
+    <!-- BARRA DE NAVEGAÇÃO SUPERIOR COM SUB-ELEMENTOS -->
     <nav class="navbar">
         <div class="navbar-left">
             <div class="nav-item">
-                <a class="nav-link active" href="#">Lar</a>
+                <a class="nav-link active" onclick="switchTab('lar')">Lar</a>
             </div>
             
-            <!-- PESQUISAR -->
             <div class="nav-item">
-                <a class="nav-link" href="#">Pesquisar <i class="fas fa-caret-down"></i></a>
+                <a class="nav-link" onclick="switchTab('pesquisar')">Pesquisar <i class="fas fa-caret-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li><a href="#">Publications</a></li>
-                    <li><a href="#">Books / Lecture Notes</a></li>
-                    <li><a href="#">Talks & Posters</a></li>
+                    <li><a onclick="switchTab('pesquisar')">Publicações</a></li>
+                    <li><a onclick="switchTab('pesquisar')">Livros / Notas de Aulas</a></li>
+                    <li><a onclick="switchTab('pesquisar')">Conversas</a></li>
+                    <li><a onclick="switchTab('pesquisar')">Posters</a></li>
+                    <li><a onclick="switchTab('pesquisar')">Aconselhamentos</a></li>
                 </ul>
             </div>
             
-            <!-- ENSINO (Com links para materiais de estudo) -->
             <div class="nav-item">
-                <a class="nav-link" href="#">Ensino <i class="fas fa-caret-down"></i></a>
+                <a class="nav-link" onclick="switchTab('ensino')">Ensino <i class="fas fa-caret-down"></i></a>
                 <ul class="dropdown-menu">
-                    <li class="dropdown-header">— Análise de Regressão —</li>
-                    <!-- Exemplo de link para Livro/Apostila em PDF -->
-                    <li><a href="materiais/livro-regressao.pdf" target="_blank">Livro de Apoio (PDF) <i class="fas fa-file-pdf" style="color: #dc3545;"></i></a></li>
-                    <!-- Exemplos de links para Slides e Scripts de Código -->
-                    <li><a href="materiais/aula1-slides.pdf" target="_blank">Aula 1 e 2: Teoria (Slides) <i class="fas fa-file-powerpoint" style="color: #e04a00;"></i></a></li>
-                    <li><a href="materiais/aula1-script.R" download>Aula 1 e 2: Laboratório (Script R) <i class="fab fa-r-project" style="color: #276dc2;"></i></a></li>
-                    <div class="dropdown-divider"></div>
-                    <li class="dropdown-header">— Probabilidade —</li>
-                    <li><a href="materiais/lista1-exercicios.pdf" target="_blank">Lista de Exercícios 1 <i class="fas fa-pen-clip"></i></a></li>
+                    <li><a onclick="switchTab('ensino')">Livros Didáticos</a></li>
+                    <li><a onclick="switchTab('ensino')">Material de Ensino</a></li>
+                    <li><a onclick="switchTab('ensino')">Listas de Exercícios</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
+                <a class="nav-link" onclick="switchTab('engenharia')">Engenharia Financeira <i class="fas fa-caret-down"></i></a>
+                <ul class="dropdown-menu">
+                    <li><a onclick="switchTab('engenharia')">Dados Financeiros</a></li>
+                    <li><a onclick="switchTab('engenharia')">Econometria</a></li>
+                </ul>
+            </div>
+            
+            <div class="nav-item">
