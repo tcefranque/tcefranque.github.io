@@ -12,6 +12,16 @@
       --max:1120px; --shadow:0 12px 35px rgba(16,42,67,.08);
     }
     *{box-sizing:border-box}
+    /* Moldura animada contínua em todo o ambiente do website */
+    @property --frame-angle { syntax: '<angle>'; initial-value: 0deg; inherits: false; }
+    body{position:relative;isolation:isolate;background:linear-gradient(135deg,#eaf2f7,#f8fbfd 45%,#e9f1f5);padding:12px;}
+    body::before{content:"";position:fixed;inset:5px;z-index:9999;pointer-events:none;border:3px solid transparent;border-radius:15px;
+      background:conic-gradient(from var(--frame-angle),#d69e36,#55b8c9,#176b87,#9a83d5,#d69e36) border-box;
+      -webkit-mask:linear-gradient(#000 0 0) padding-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;
+      animation:frameRotation 11s linear infinite;filter:drop-shadow(0 0 5px rgba(23,107,135,.35));}
+    @keyframes frameRotation{to{--frame-angle:360deg}}
+    @keyframes softGlow{0%,100%{box-shadow:0 0 0 3px rgba(23,107,135,.12),0 10px 28px rgba(16,42,67,.12)}50%{box-shadow:0 0 0 5px rgba(214,158,54,.22),0 12px 34px rgba(16,42,67,.18)}}
+    @media(prefers-reduced-motion:reduce){body::before{animation:none}.portrait-frame{animation:none}}
     html{scroll-behavior:smooth;scroll-padding-top:86px}
     body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);line-height:1.65;background:#fff}
     a{color:var(--blue);text-decoration:none}
@@ -31,7 +41,13 @@
     .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
     .btn{display:inline-block;padding:11px 17px;border-radius:7px;background:var(--navy);color:#fff;font-weight:700}
     .btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--line)}
-    .portrait{width:min(100%,310px);aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:14px;box-shadow:var(--shadow);border:7px solid white;justify-self:end;filter:grayscale(100%)}
+    .portrait-frame{width:min(100%,326px);aspect-ratio:4/5;padding:7px;border-radius:19px;justify-self:end;position:relative;isolation:isolate;animation:softGlow 5s ease-in-out infinite;background:conic-gradient(from 0deg,#d69e36,#55b8c9,#176b87,#9a83d5,#d69e36)}
+    .portrait{display:block;width:100%;height:100%;object-fit:cover;object-position:center 28%;border-radius:13px;border:3px solid #fff;box-shadow:var(--shadow);filter:none;background:#eaf0f4}
+    .location-card{position:relative;overflow:hidden}
+    .location-card:after{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:linear-gradient(180deg,#d69e36,#55b8c9,#176b87)}
+    .coords{font-family:ui-monospace,SFMono-Regular,Consolas,monospace;font-size:.91rem;color:#24566b;overflow-wrap:anywhere}
+    .map-link{display:inline-block;margin-top:8px;font-weight:700}
+    .source-note{font-size:.78rem;color:var(--muted);margin-top:18px}
     section{padding:68px 0;border-bottom:1px solid var(--line)}
     section:nth-of-type(even){background:#fbfcfd}
     h2{font-size:1.8rem;color:var(--navy);letter-spacing:-.025em;margin:0 0 10px}
@@ -54,8 +70,8 @@
     footer{background:var(--navy);color:#e9f0f5;padding:34px 0}
     footer a{color:#b9e2f0}
     .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
-    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:28px}.portrait{justify-self:start;width:230px}nav{gap:10px}.grid{grid-template-columns:1fr}}
-    @media(max-width:620px){.nav{align-items:flex-start;padding:15px 0;flex-direction:column}nav{gap:8px 13px}nav a{font-size:.82rem}.hero{padding:48px 0}.wrap{width:min(var(--max),calc(100% - 28px))}section{padding:50px 0}}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:28px}.portrait-frame{justify-self:start;width:246px}nav{gap:10px}.grid{grid-template-columns:1fr}}
+    @media(max-width:620px){body{padding:8px}.nav{align-items:flex-start;padding:15px 0;flex-direction:column}nav{gap:8px 13px}nav a{font-size:.82rem}.hero{padding:48px 0}.wrap{width:min(var(--max),calc(100% - 28px))}section{padding:50px 0}}
   </style>
 </head>
 <body>
@@ -69,6 +85,7 @@
       <a href="#experience" data-pt="Experiência" data-en="Experience">Experiência</a>
       <a href="#publications" data-pt="Publicações" data-en="Publications">Publicações</a>
       <a href="#supervision" data-pt="Orientações" data-en="Supervision">Orientações</a>
+      <a href="#locations" data-pt="Localização" data-en="Locations">Localização</a>
       <a href="#contact" data-pt="Contacto" data-en="Contact">Contacto</a>
       <button class="lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
     </nav>
@@ -88,7 +105,9 @@
           <a class="btn secondary" href="https://lattes.cnpq.br/5307470116965404" target="_blank" rel="noopener">Currículo Lattes ↗</a>
         </div>
       </div>
-      <img class="portrait" src="images/profile.jpg" alt="Fotografia de Tiago Chandiona Ernesto Franque">
+      <div class="portrait-frame">
+        <img class="portrait" src="images/profile.jpg" alt="Fotografia de Tiago Chandiona Ernesto Franque" width="1200" height="1500">
+      </div>
     </div>
   </div>
 
@@ -195,6 +214,30 @@
              data-en="Teaching Mathematics at primary and secondary education levels.">Experiência de ensino de Matemática nos níveis fundamental e médio.</p>
         </div>
       </div>
+    </div>
+  </section>
+
+  <section id="locations">
+    <div class="wrap">
+      <h2 data-pt="Localização geográfica das instituições" data-en="Geographical locations of institutions">Localização geográfica das instituições</h2>
+      <p class="section-intro" data-pt="Referências geográficas das instituições que integram a minha trajetória académica e profissional. As coordenadas da UniSave identificam a localidade de Chongoene, como referência aproximada da sede universitária; não representam a entrada exata do campus."
+         data-en="Geographical references for the institutions in my academic and professional path. The UniSave coordinates identify the locality of Chongoene as an approximate reference for the university headquarters; they do not represent the exact campus entrance.">Referências geográficas das instituições que integram a minha trajetória académica e profissional. As coordenadas da UniSave identificam a localidade de Chongoene, como referência aproximada da sede universitária; não representam a entrada exata do campus.</p>
+      <div class="grid">
+        <article class="card location-card">
+          <h3>Universidade Federal de Minas Gerais (UFMG)</h3>
+          <p class="meta">Campus Pampulha · Belo Horizonte, Minas Gerais, Brasil</p>
+          <p class="coords">Latitude: −19.869159<br>Longitude: −43.966363</p>
+          <a class="map-link" href="https://www.google.com/maps?q=-19.869159,-43.966363" target="_blank" rel="noopener" data-pt="Abrir localização no mapa ↗" data-en="Open location on map ↗">Abrir localização no mapa ↗</a>
+        </article>
+        <article class="card location-card">
+          <h3>Universidade Save (UniSave)</h3>
+          <p class="meta">Campus-sede · Chongoene, Província de Gaza, Moçambique</p>
+          <p class="coords">Latitude: −25.019444<br>Longitude: 33.796111</p>
+          <a class="map-link" href="https://www.google.com/maps?q=-25.019444,33.796111" target="_blank" rel="noopener" data-pt="Abrir localização no mapa ↗" data-en="Open location on map ↗">Abrir localização no mapa ↗</a>
+          <p class="source-note" data-pt="Coordenadas aproximadas da localidade de Chongoene; confirmar a posição exata do edifício/campus antes de usar como referência de navegação." data-en="Approximate coordinates for Chongoene locality; confirm the exact campus/building position before using for navigation.">Coordenadas aproximadas da localidade de Chongoene; confirmar a posição exata do edifício/campus antes de usar como referência de navegação.</p>
+        </article>
+      </div>
+      <p class="source-note">Fontes de localização: <a href="https://visite.museus.gov.br/instituicoes/museu-de-ciencias-morfologicas-da-universidade-federal-de-minas-gerais/" target="_blank" rel="noopener">geolocalização no Campus Pampulha/UFMG</a> · <a href="https://unisave.ac.mz/" target="_blank" rel="noopener">Universidade Save</a> · <a href="https://instituto-camoes.pt/sobre/onde-estamos/mocambique" target="_blank" rel="noopener">referência institucional ao Campus de Chongoene</a>.</p>
     </div>
   </section>
 
