@@ -1,300 +1,288 @@
 <!DOCTYPE html>
 <html lang="pt">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiago Chandiona Franque</title>
-    <!-- Biblioteca de Ícones Font Awesome -->
-    <link rel="stylesheet" href="https://cloudflare.com">
-    <style>
-        /* Base e Tipografia Estilo Quarto Academic */
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            background-color: #fafbfc;
-            background-image: url("data:image/svg+xml,%3Csvg xmlns='http://w3.org' width='200' height='200' viewBox='0 0 200 200'%3E%3Cpath d='M10 10L50 60L100 20L150 80L190 30' stroke='%23e2e8f0' stroke-width='1' fill='none'/%3E%3Ccircle cx='10' cy='10' r='2' fill='%23cbd5e1'/%3E%3Ccircle cx='50' cy='60' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='100' cy='20' r='2' fill='%23cbd5e1'/%3E%3Ccircle cx='150' cy='80' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='190' cy='30' r='2' fill='%23cbd5e1'/%3E%3Cpath d='M20 150L80 120L130 170L180 110' stroke='%23e2e8f0' stroke-width='1' fill='none'/%3E%3Ccircle cx='20' cy='150' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='80' cy='120' r='2' fill='%23cbd5e1'/%3E%3Ccircle cx='130' cy='170' r='3' fill='%2394a3b8'/%3E%3Ccircle cx='180' cy='110' r='2' fill='%23cbd5e1'/%3E%3C/svg%3E");
-            color: #333333;
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-
-        /* Barra de Navegação Escura */
-        .navbar {
-            background-color: #212529;
-            padding: 0 40px;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            height: 54px;
-        }
-        .navbar-left {
-            display: flex;
-            align-items: center;
-            height: 100%;
-        }
-        
-        /* Itens do Menu */
-        .nav-item {
-            position: relative;
-            height: 100%;
-            display: flex;
-            align-items: center;
-        }
-        .nav-link {
-            color: #ced4da;
-            text-decoration: none;
-            font-size: 0.95em;
-            font-weight: 400;
-            padding: 0 15px;
-            height: 100%;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-            cursor: pointer;
-            transition: color 0.2s, background-color 0.2s;
-        }
-        .nav-link:hover, .nav-item:hover .nav-link {
-            color: #ffffff;
-            background-color: #2c3034;
-        }
-        .nav-link.active {
-            color: #ffffff;
-            background-color: #2c3034;
-            font-weight: 600;
-        }
-
-        /* Menus Suspensos (Dropdowns) */
-        .dropdown-menu {
-            display: none;
-            position: absolute;
-            top: 100%;
-            left: 0;
-            background-color: #ffffff;
-            min-width: 250px;
-            box-shadow: 0 8px 16px rgba(0,0,0,0.1);
-            border: 1px solid #dee2e6;
-            border-radius: 0 0 4px 4px;
-            padding: 8px 0;
-            list-style: none;
-            margin: 0;
-        }
-        .dropdown-menu a {
-            color: #212529;
-            padding: 8px 20px;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            font-size: 0.9em;
-        }
-        .dropdown-menu a:hover {
-            background-color: #f8f9fa;
-            color: #0f766e;
-        }
-        .nav-item:hover .dropdown-menu {
-            display: block;
-        }
-
-        .navbar-right {
-            display: flex;
-            align-items: center;
-            gap: 20px;
-            color: #ced4da;
-        }
-        .navbar-right a {
-            color: #ced4da;
-            text-decoration: none;
-            font-size: 1.1em;
-        }
-        .navbar-right a:hover {
-            color: #ffffff;
-        }
-
-        /* Contentor e Mecanismo de Abas (Sections) */
-        .main-container {
-            max-width: 1140px;
-            margin: 40px auto;
-            padding: 0 20px;
-            min-height: 70vh;
-        }
-
-        /* Oculta as secções por padrão, exibe apenas a ativa */
-        .content-section {
-            display: none;
-        }
-        .content-section.active-section {
-            display: block;
-        }
-
-        /* Layout Especial da Aba Lar (Sobre Mim) */
-        .top-layout {
-            display: grid;
-            grid-template-columns: 3fr 1fr;
-            gap: 30px;
-            align-items: start;
-        }
-        .profile-card {
-            display: flex;
-            gap: 40px;
-            align-items: start;
-        }
-        .photo-col img {
-            width: 190px;
-            height: 190px;
-            border-radius: 50%;
-            object-fit: cover;
-            border: 1px solid #dee2e6;
-            margin-top: 50px;
-        }
-        .info-col {
-            flex: 1;
-        }
-        .section-title {
-            font-size: 2em;
-            font-weight: 700;
-            color: #212529;
-            margin: 0 0 15px 0;
-        }
-        .profile-name {
-            font-size: 2.1em;
-            font-weight: 700;
-            color: #212529;
-            margin: 0 0 10px 0;
-        }
-        .profile-title {
-            font-size: 1.4em;
-            font-weight: 400;
-            color: #495057;
-            margin: 0 0 20px 0;
-        }
-        .bio-text p {
-            color: #495057;
-            font-size: 1.05em;
-            margin-bottom: 18px;
-            text-align: justify;
-        }
-
-        /* Widget de Localização */
-        .location-widget {
-            background: #ffffff;
-            border: 1px solid #e3e6f0;
-            border-radius: 6px;
-            padding: 16px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.04);
-            font-size: 0.88em;
-        }
-        .widget-header {
-            color: #dc3545;
-            font-weight: 600;
-            margin-bottom: 12px;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-        .widget-field {
-            margin-bottom: 12px;
-        }
-        .widget-field label {
-            display: block;
-            color: #6c757d;
-            font-size: 0.82em;
-            margin-bottom: 4px;
-        }
-        .widget-field input {
-            width: 100%;
-            padding: 6px 10px;
-            border: 1px solid #ced4da;
-            border-radius: 4px;
-            box-sizing: border-box;
-        }
-        .widget-btn {
-            width: 100%;
-            background-color: #212529;
-            color: #ffffff;
-            border: none;
-            padding: 8px;
-            border-radius: 4px;
-            font-weight: 500;
-            cursor: pointer;
-        }
-
-        /* Estilo Padrão para Listas Académicas */
-        .academic-section-title {
-            font-size: 1.8em;
-            font-weight: 600;
-            border-bottom: 1px solid #dee2e6;
-            padding-bottom: 8px;
-            margin-bottom: 25px;
-            color: #212529;
-        }
-        .list-item {
-            margin-bottom: 25px;
-            background: #ffffff;
-            padding: 20px;
-            border-radius: 6px;
-            border: 1px solid #e3e6f0;
-        }
-        .item-tag {
-            display: inline-block;
-            background: #0f766e;
-            color: white;
-            font-size: 0.8em;
-            padding: 3px 8px;
-            border-radius: 4px;
-            font-weight: 500;
-            margin-bottom: 8px;
-        }
-        .item-main-title {
-            font-size: 1.2em;
-            font-weight: 600;
-            color: #212529;
-            margin: 0 0 5px 0;
-        }
-        .item-institution {
-            font-size: 0.95em;
-            color: #6c757d;
-            margin: 0;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Website académico de Tiago Chandiona Ernesto Franque — Estatística, Probabilidade e investigação.">
+  <title>Tiago Chandiona Ernesto Franque | Academic Website</title>
+  <style>
+    :root {
+      --ink:#172536; --muted:#5d6b7a; --navy:#102a43; --blue:#176b87;
+      --pale:#f3f7fa; --line:#dce5eb; --white:#fff; --accent:#d69e36;
+      --max:1120px; --shadow:0 12px 35px rgba(16,42,67,.08);
+    }
+    *{box-sizing:border-box}
+    html{scroll-behavior:smooth;scroll-padding-top:86px}
+    body{margin:0;font-family:Inter,Segoe UI,Arial,sans-serif;color:var(--ink);line-height:1.65;background:#fff}
+    a{color:var(--blue);text-decoration:none}
+    a:hover{text-decoration:underline}
+    .wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+    header{position:sticky;top:0;z-index:20;background:rgba(255,255,255,.96);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+    .nav{min-height:72px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+    .brand{font-weight:800;color:var(--navy);letter-spacing:.01em;font-size:1.02rem}
+    nav{display:flex;align-items:center;gap:17px;flex-wrap:wrap}
+    nav a{font-size:.88rem;color:#34495e;font-weight:600}
+    .lang{border:1px solid var(--line);background:var(--pale);padding:7px 11px;border-radius:7px;cursor:pointer;font-weight:700;color:var(--navy)}
+    .hero{background:linear-gradient(135deg,#f4f8fb 0%,#fff 72%);padding:76px 0 70px}
+    .hero-grid{display:grid;grid-template-columns:1.35fr .65fr;gap:55px;align-items:center}
+    .eyebrow{text-transform:uppercase;letter-spacing:.14em;color:var(--blue);font-size:.76rem;font-weight:800}
+    h1{font-size:clamp(2.2rem,5vw,3.65rem);line-height:1.12;letter-spacing:-.04em;color:var(--navy);margin:13px 0 18px}
+    .lead{font-size:1.12rem;color:#405466;max-width:720px}
+    .hero-actions{display:flex;gap:12px;flex-wrap:wrap;margin-top:25px}
+    .btn{display:inline-block;padding:11px 17px;border-radius:7px;background:var(--navy);color:#fff;font-weight:700}
+    .btn.secondary{background:#fff;color:var(--navy);border:1px solid var(--line)}
+    .portrait{width:min(100%,310px);aspect-ratio:4/5;object-fit:cover;object-position:center 30%;border-radius:14px;box-shadow:var(--shadow);border:7px solid white;justify-self:end;filter:grayscale(100%)}
+    section{padding:68px 0;border-bottom:1px solid var(--line)}
+    section:nth-of-type(even){background:#fbfcfd}
+    h2{font-size:1.8rem;color:var(--navy);letter-spacing:-.025em;margin:0 0 10px}
+    .section-intro{color:var(--muted);margin:0 0 28px;max-width:800px}
+    h3{color:var(--navy);margin:0 0 7px;font-size:1.08rem}
+    .grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+    .card{background:#fff;border:1px solid var(--line);border-radius:10px;padding:21px;box-shadow:0 4px 16px rgba(16,42,67,.035)}
+    .meta{font-size:.9rem;color:var(--muted);margin-bottom:7px}
+    .tag{display:inline-block;background:#edf4f7;color:#24566b;padding:4px 9px;border-radius:20px;font-size:.78rem;font-weight:700;margin:3px 4px 3px 0}
+    .timeline{border-left:2px solid #d8e5ec;margin-left:8px;padding-left:22px;display:grid;gap:23px}
+    .timeline-item{position:relative}
+    .timeline-item:before{content:"";position:absolute;left:-29px;top:7px;width:11px;height:11px;background:var(--blue);border:3px solid #e7f0f4;border-radius:50%}
+    .year{font-size:.84rem;color:var(--blue);font-weight:800}
+    .pub{padding:17px 0;border-bottom:1px solid var(--line)}
+    .pub:last-child{border-bottom:0}
+    .orient-list{display:grid;gap:14px}
+    .orient-item{padding:17px;border:1px solid var(--line);border-radius:9px;background:white}
+    .orient-item p{margin:5px 0 0}
+    .small{font-size:.9rem;color:var(--muted)}
+    footer{background:var(--navy);color:#e9f0f5;padding:34px 0}
+    footer a{color:#b9e2f0}
+    .footer-row{display:flex;justify-content:space-between;gap:20px;flex-wrap:wrap}
+    @media(max-width:850px){.hero-grid{grid-template-columns:1fr;gap:28px}.portrait{justify-self:start;width:230px}nav{gap:10px}.grid{grid-template-columns:1fr}}
+    @media(max-width:620px){.nav{align-items:flex-start;padding:15px 0;flex-direction:column}nav{gap:8px 13px}nav a{font-size:.82rem}.hero{padding:48px 0}.wrap{width:min(var(--max),calc(100% - 28px))}section{padding:50px 0}}
+  </style>
 </head>
 <body>
+<header>
+  <div class="wrap nav">
+    <a class="brand" href="#home">TCF<span style="color:var(--accent)">.</span></a>
+    <nav aria-label="Main navigation">
+      <a href="#about" data-pt="Sobre" data-en="About">Sobre</a>
+      <a href="#research" data-pt="Investigação" data-en="Research">Investigação</a>
+      <a href="#education" data-pt="Formação" data-en="Education">Formação</a>
+      <a href="#experience" data-pt="Experiência" data-en="Experience">Experiência</a>
+      <a href="#publications" data-pt="Publicações" data-en="Publications">Publicações</a>
+      <a href="#supervision" data-pt="Orientações" data-en="Supervision">Orientações</a>
+      <a href="#contact" data-pt="Contacto" data-en="Contact">Contacto</a>
+      <button class="lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
+    </nav>
+  </div>
+</header>
 
-    <!-- BARRA DE NAVEGAÇÃO SUPERIOR COM SUB-ELEMENTOS -->
-    <nav class="navbar">
-        <div class="navbar-left">
-            <div class="nav-item">
-                <a class="nav-link active" onclick="switchTab('lar')">Lar</a>
-            </div>
-            
-            <div class="nav-item">
-                <a class="nav-link" onclick="switchTab('pesquisar')">Pesquisar <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a onclick="switchTab('pesquisar')">Publicações</a></li>
-                    <li><a onclick="switchTab('pesquisar')">Livros / Notas de Aulas</a></li>
-                    <li><a onclick="switchTab('pesquisar')">Conversas</a></li>
-                    <li><a onclick="switchTab('pesquisar')">Posters</a></li>
-                    <li><a onclick="switchTab('pesquisar')">Aconselhamentos</a></li>
-                </ul>
-            </div>
-            
-            <div class="nav-item">
-                <a class="nav-link" onclick="switchTab('ensino')">Ensino <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a onclick="switchTab('ensino')">Livros Didáticos</a></li>
-                    <li><a onclick="switchTab('ensino')">Material de Ensino</a></li>
-                    <li><a onclick="switchTab('ensino')">Listas de Exercícios</a></li>
-                </ul>
-            </div>
-            
-            <div class="nav-item">
-                <a class="nav-link" onclick="switchTab('engenharia')">Engenharia Financeira <i class="fas fa-caret-down"></i></a>
-                <ul class="dropdown-menu">
-                    <li><a onclick="switchTab('engenharia')">Dados Financeiros</a></li>
-                    <li><a onclick="switchTab('engenharia')">Econometria</a></li>
-                </ul>
-            </div>
-            
-            <div class="nav-item">
+<main>
+  <div class="hero" id="home">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow" data-pt="Estatística · Probabilidade · Investigação" data-en="Statistics · Probability · Research">Estatística · Probabilidade · Investigação</div>
+        <h1>Tiago Chandiona Ernesto Franque</h1>
+        <p class="lead" data-pt="Docente universitário e investigador. Doutorando em Estatística na Universidade Federal de Minas Gerais (UFMG), com interesse em métodos estatísticos, regressão, séries temporais e modelação de dados de contagem."
+           data-en="University lecturer and researcher. PhD candidate in Statistics at the Federal University of Minas Gerais (UFMG), interested in statistical methods, regression, time series and count-data modelling.">Docente universitário e investigador. Doutorando em Estatística na Universidade Federal de Minas Gerais (UFMG), com interesse em métodos estatísticos, regressão, séries temporais e modelação de dados de contagem.</p>
+        <div class="hero-actions">
+          <a class="btn" href="#research" data-pt="Conheça a minha investigação" data-en="Explore my research">Conheça a minha investigação</a>
+          <a class="btn secondary" href="https://lattes.cnpq.br/5307470116965404" target="_blank" rel="noopener">Currículo Lattes ↗</a>
+        </div>
+      </div>
+      <img class="portrait" src="images/profile.jpg" alt="Fotografia de Tiago Chandiona Ernesto Franque">
+    </div>
+  </div>
+
+  <section id="about">
+    <div class="wrap">
+      <h2 data-pt="Sobre mim" data-en="About me">Sobre mim</h2>
+      <p class="section-intro" data-pt="Sou docente assistente da Universidade Save e doutorando em Estatística na UFMG. A minha trajetória reúne ensino, investigação e aplicação de métodos estatísticos a problemas científicos e sociais."
+         data-en="I am an Assistant Lecturer at Universidade Save and a PhD candidate in Statistics at UFMG. My academic path brings together teaching, research and the application of statistical methods to scientific and social problems.">Sou docente assistente da Universidade Save e doutorando em Estatística na UFMG. A minha trajetória reúne ensino, investigação e aplicação de métodos estatísticos a problemas científicos e sociais.</p>
+      <div class="grid">
+        <article class="card">
+          <h3 data-pt="Áreas de interesse" data-en="Research interests">Áreas de interesse</h3>
+          <span class="tag">Estatística</span><span class="tag">Probabilidade</span><span class="tag">Regressão</span><span class="tag">Séries temporais</span><span class="tag">Modelos de contagem</span><span class="tag">Estatística espaço-temporal</span><span class="tag">Econometria</span>
+        </article>
+        <article class="card">
+          <h3 data-pt="Identificadores académicos" data-en="Academic profiles">Identificadores académicos</h3>
+          <p><a href="https://lattes.cnpq.br/5307470116965404" target="_blank" rel="noopener">Currículo Lattes</a></p>
+          <p><a href="https://orcid.org/0009-0008-7613-5098" target="_blank" rel="noopener">ORCID: 0009-0008-7613-5098</a></p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="research">
+    <div class="wrap">
+      <h2 data-pt="Investigação" data-en="Research">Investigação</h2>
+      <p class="section-intro" data-pt="A minha investigação concentra-se no desenvolvimento metodológico em análise de regressão, séries temporais e inferência estatística avançada."
+         data-en="My research focuses on methodological development in regression analysis, time series and advanced statistical inference.">A minha investigação concentra-se no desenvolvimento metodológico em análise de regressão, séries temporais e inferência estatística avançada.</p>
+      <div class="grid">
+        <article class="card">
+          <h3>PST-PINGARCH</h3>
+          <p data-pt="Modelos periódicos espaço-temporais Poisson-INGARCH para dados de contagem, considerando dependência temporal, interação espacial e variação periódica."
+             data-en="Periodic spatio-temporal Poisson-INGARCH models for count data, accounting for temporal dependence, spatial interaction and periodic variation.">Modelos periódicos espaço-temporais Poisson-INGARCH para dados de contagem, considerando dependência temporal, interação espacial e variação periódica.</p>
+        </article>
+        <article class="card">
+          <h3 data-pt="Regressão M-quantílica" data-en="M-quantile regression">Regressão M-quantílica</h3>
+          <p data-pt="Desenvolvimento de métodos robustos de estimação e propriedades assintóticas para modelos de contagem."
+             data-en="Development of robust estimation methods and asymptotic properties for count-data models.">Desenvolvimento de métodos robustos de estimação e propriedades assintóticas para modelos de contagem.</p>
+        </article>
+        <article class="card">
+          <h3 data-pt="Séries temporais e previsão" data-en="Time series and forecasting">Séries temporais e previsão</h3>
+          <p data-pt="Modelação de séries temporais, regressão dinâmica, modelos harmónicos e previsão de procura."
+             data-en="Time-series modelling, dynamic regression, harmonic models and demand forecasting.">Modelação de séries temporais, regressão dinâmica, modelos harmónicos e previsão de procura.</p>
+        </article>
+        <article class="card">
+          <h3 data-pt="Aplicações epidemiológicas e ambientais" data-en="Epidemiological and environmental applications">Aplicações epidemiológicas e ambientais</h3>
+          <p data-pt="Aplicação de métodos estatísticos a dados de contagem, fenómenos epidemiológicos e eventos ambientais."
+             data-en="Application of statistical methods to count data, epidemiological phenomena and environmental events.">Aplicação de métodos estatísticos a dados de contagem, fenómenos epidemiológicos e eventos ambientais.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section id="education">
+    <div class="wrap">
+      <h2 data-pt="Formação académica" data-en="Education">Formação académica</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="year">2024 – atual / present</div>
+          <h3 data-pt="Doutoramento em Estatística" data-en="PhD in Statistics">Doutoramento em Estatística</h3>
+          <div class="meta">Universidade Federal de Minas Gerais (UFMG), Belo Horizonte, Brasil</div>
+          <p class="small" data-pt="Orientador: Prof. Dr. Valdério Anselmo Reisen. Investigação em modelos periódicos espaço-temporais Poisson-INGARCH e regressão M-quantílica."
+             data-en="Advisor: Prof. Valdério Anselmo Reisen. Research on periodic spatio-temporal Poisson-INGARCH models and M-quantile regression.">Orientador: Prof. Dr. Valdério Anselmo Reisen. Investigação em modelos periódicos espaço-temporais Poisson-INGARCH e regressão M-quantílica.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2022–2024</div>
+          <h3 data-pt="Mestrado em Estatística" data-en="Master's degree in Statistics">Mestrado em Estatística</h3>
+          <div class="meta">Universidade de Brasília (UnB), Brasília, Brasil</div>
+          <p class="small" data-pt="Dissertação: “Modelo de regressão log de sobrevivências proporcionais para dados discretos com presença de censura”. Orientador: Prof. Dr. Eduardo Yoshio Nakano."
+             data-en="Dissertation: “Modelo de regressão log de sobrevivências proporcionais para dados discretos com presença de censura”. Advisor: Prof. Eduardo Yoshio Nakano.">Dissertação: “Modelo de regressão log de sobrevivências proporcionais para dados discretos com presença de censura”. Orientador: Prof. Dr. Eduardo Yoshio Nakano.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2010–2014</div>
+          <h3 data-pt="Licenciatura em Ensino de Matemática" data-en="Bachelor's degree in Mathematics Education">Licenciatura em Ensino de Matemática</h3>
+          <div class="meta">Universidade Pedagógica de Moçambique, Maputo</div>
+          <p class="small" data-pt="Trabalho: “Aplicação de Homotetias na Vida Práctica — O caso de Construção de Um Tecto de Palhota”. Orientador: Prof. Dr. Evaristo Domingos Uaila."
+             data-en="Undergraduate project: “Aplicação de Homotetias na Vida Práctica — O caso de Construção de Um Tecto de Palhota”. Advisor: Prof. Evaristo Domingos Uaila.">Trabalho: “Aplicação de Homotetias na Vida Práctica — O caso de Construção de Um Tecto de Palhota”. Orientador: Prof. Dr. Evaristo Domingos Uaila.</p>
+        </div>
+      </div>
+      <p class="small" style="margin-top:18px" data-pt="Graduação concluída em 2014."
+         data-en="Degree completed in 2014.">Graduação concluída em 2014.</p>
+    </div>
+  </section>
+
+  <section id="experience">
+    <div class="wrap">
+      <h2 data-pt="Experiência profissional e académica" data-en="Professional and academic experience">Experiência profissional e académica</h2>
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="year">2025–atual / present</div>
+          <h3 data-pt="Professor visitante — Universidade Federal de Minas Gerais (UFMG)" data-en="Visiting Professor — Federal University of Minas Gerais (UFMG)">Professor visitante — Universidade Federal de Minas Gerais (UFMG)</h3>
+          <p data-pt="Docência da disciplina de Introdução à Estatística e Probabilidade em cursos de graduação."
+             data-en="Teaching Introduction to Statistics and Probability to undergraduate students.">Docência da disciplina de Introdução à Estatística e Probabilidade em cursos de graduação.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2021–atual / present</div>
+          <h3 data-pt="Assistente Universitário — Universidade Save, Moçambique" data-en="Assistant Lecturer — Universidade Save, Mozambique">Assistente Universitário — Universidade Save, Moçambique</h3>
+          <p data-pt="Departamento de Ciências Exactas, Faculdade de Ciências Naturais e Exactas."
+             data-en="Department of Exact Sciences, Faculty of Natural and Exact Sciences.">Departamento de Ciências Exactas, Faculdade de Ciências Naturais e Exactas.</p>
+        </div>
+        <div class="timeline-item">
+          <div class="year">2015–2020</div>
+          <h3 data-pt="Professor de Matemática — Ministério da Educação e Cultura, Moçambique" data-en="Mathematics Teacher — Ministry of Education and Culture, Mozambique">Professor de Matemática — Ministério da Educação e Cultura, Moçambique</h3>
+          <p data-pt="Experiência de ensino de Matemática nos níveis fundamental e médio."
+             data-en="Teaching Mathematics at primary and secondary education levels.">Experiência de ensino de Matemática nos níveis fundamental e médio.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="publications">
+    <div class="wrap">
+      <h2 data-pt="Publicações" data-en="Publications">Publicações</h2>
+      <div class="pub">
+        <h3>Modelo de Regressão Log de Sobrevivências Proporcionais Para Dados Discretos com Presença de Censura</h3>
+        <p class="meta">Tiago Chandiona Ernesto Franque; Marcelo Ramos Pereira Cardial; Eduardo Yoshio Nakano. <em>Mathematics</em>, v. 13, p. 800–814, 2025.</p>
+      </div>
+      <div class="pub">
+        <h3>Modelos BATS, Regressão Dinâmica, Harmônica e TBATS na modelagem da demanda de energia elétrica no Sudeste do Brasil (2018–2019)</h3>
+        <p class="meta">Tiago Chandiona Ernesto Franque; D. C. G. Ernesto; E. Y. Nakano; J. A. Fiorucci. <em>SIGMAE</em>, v. 12, p. 187–200, 2023.</p>
+      </div>
+      <div class="pub">
+        <h3 data-pt="Material didático" data-en="Teaching material">Material didático</h3>
+        <p class="meta">FRANQUE, T. C. E. et al. <em>Matemática — Exames resolvidos, 2014–2018, 12ª Classe</em>. Material de apoio didático. Maputo: Ministério da Educação e Desenvolvimento Humano, 2019.</p>
+      </div>
+      <p class="small" data-pt="Registos transcritos do Currículo Lattes; consulte o perfil para a lista atualizada."
+         data-en="Records transcribed from the Lattes CV; consult the profile for the updated list.">Registos transcritos do Currículo Lattes; consulte o perfil para a lista atualizada.</p>
+    </div>
+  </section>
+
+  <section id="supervision">
+    <div class="wrap">
+      <h2 data-pt="Orientações e supervisões" data-en="Supervision">Orientações e supervisões</h2>
+      <p class="section-intro" data-pt="Registos de orientações concluídas e em andamento, conforme o Currículo Lattes."
+         data-en="Completed and ongoing supervision records, as listed in the Lattes CV.">Registos de orientações concluídas e em andamento, conforme o Currículo Lattes.</p>
+      <h3 data-pt="Trabalhos de conclusão de curso de graduação — concluídos" data-en="Undergraduate final projects — completed">Trabalhos de conclusão de curso de graduação — concluídos</h3>
+      <div class="orient-list" style="margin:14px 0 30px">
+        <article class="orient-item"><strong>José Jorge Sitoe (2024)</strong><p>Aplicação de modelos de regressão Linear na modelagem de consumo de água no povoado de Nuvungene-Moçambique.</p><span class="small">Licenciatura em Ensino de Matemática — Universidade Save</span></article>
+        <article class="orient-item"><strong>Jamisse Mário Limeme (2023)</strong><p>Aplicação do Jogo Torre de Hanói no Processo de Ensino-Aprendizagem de Função Exponencial: Caso do Estudo da 10ª Classe da Escola Secundária Ndambine 2000.</p><span class="small">Licenciatura em Ensino de Matemática — Universidade Save</span></article>
+      </div>
+      <h3 data-pt="Monografias — concluídas" data-en="Monographs — completed">Monografias — concluídas</h3>
+      <div class="orient-list" style="margin:14px 0 30px">
+        <article class="orient-item"><strong>Azore Sérgio Macamo (2025)</strong><p>Aplicação das Matrizes na Análise do Desempenho Desportivo: Caso da Modalidade de Futebol 11 no Campeonato Nacional.</p><span class="small">Licenciatura em Matemática com Especialização em Ensino — Universidade Save</span></article>
+        <article class="orient-item"><strong>Zélio Sérgio Bila (2025)</strong><p>Impacto do Nível de Escolaridade, Género e Idade na Evolução do Estágio de Infecção pelo HIV/SIDA — Caso de Estudo do Centro de Saúde Patrice Lumumba da Cidade de Xai-Xai, Gaza.</p><span class="small">Licenciatura em Matemática com Especialização em Ensino — Universidade Save</span></article>
+        <article class="orient-item"><strong>José Mbalame (2025)</strong><p>Modelo de Propensão à Troca da Rede de Telefonia Móvel — Caso de Estudo Distrito de Chongoene.</p><span class="small">Licenciatura em Matemática com Especialização em Ensino — Universidade Save</span></article>
+        <article class="orient-item"><strong>Emídio Salomão Nhaume (2025)</strong><p>Previsão da Demanda Eléctrica do Distrito de Xai-Xai com Aplicação de Modelos de Séries Temporais: Caso série H33EL3 da subestação Tavene (2022–2023).</p><span class="small">Licenciatura em Matemática com Especialização em Ensino — Universidade Save</span></article>
+      </div>
+      <h3 data-pt="Orientação em andamento" data-en="Ongoing supervision">Orientação em andamento</h3>
+      <div class="orient-list" style="margin-top:14px">
+        <article class="orient-item"><strong>Leonildo Orlando Macuacua (2025)</strong><p>Relação entre Amplitude e Desvio Padrão de um Conjunto de Dados.</p><span class="small">Licenciatura em Matemática com Especialização em Ensino — Universidade Save</span></article>
+      </div>
+    </div>
+  </section>
+
+  <section id="contact">
+    <div class="wrap">
+      <h2 data-pt="Contacto e ligações institucionais" data-en="Contact and institutional links">Contacto e ligações institucionais</h2>
+      <div class="grid">
+        <article class="card">
+          <h3 data-pt="Instituições" data-en="Institutions">Instituições</h3>
+          <p><a href="https://unisave.ac.mz/" target="_blank" rel="noopener">Universidade Save</a></p>
+          <p><a href="https://www.ufmg.br/" target="_blank" rel="noopener">Universidade Federal de Minas Gerais (UFMG)</a></p>
+          <p>Ministério da Educação e Cultura de Moçambique <span class="small" data-pt="(experiência profissional anterior)" data-en="(previous professional experience)">(experiência profissional anterior)</span></p>
+        </article>
+        <article class="card">
+          <h3 data-pt="Perfis académicos" data-en="Academic profiles">Perfis académicos</h3>
+          <p><a href="https://lattes.cnpq.br/5307470116965404" target="_blank" rel="noopener">Currículo Lattes</a></p>
+          <p><a href="https://orcid.org/0009-0008-7613-5098" target="_blank" rel="noopener">ORCID</a></p>
+          <p class="small" data-pt="O endereço de e-mail será acrescentado quando for confirmado."
+             data-en="An email address can be added once confirmed.">O endereço de e-mail será acrescentado quando for confirmado.</p>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap footer-row">
+    <div>© <span id="year"></span> Tiago Chandiona Ernesto Franque</div>
+    <div data-pt="Website académico" data-en="Academic website">Website académico</div>
+  </div>
+</footer>
+<script>
+  const toggle = document.getElementById('langToggle');
+  let language = 'pt';
+  function setLanguage(lang) {
+    language = lang;
+    document.documentElement.lang = lang;
+    document.querySelectorAll('[data-pt][data-en]').forEach(el => {
+      el.textContent = el.getAttribute('data-' + lang);
+    });
+    toggle.textContent = lang === 'pt' ? 'EN' : 'PT';
+  }
+  toggle.addEventListener('click', () => setLanguage(language === 'pt' ? 'en' : 'pt'));
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>
