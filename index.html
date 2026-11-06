@@ -66,6 +66,63 @@
     .orient-list{display:grid;gap:14px}
     .orient-item{padding:17px;border:1px solid var(--line);border-radius:9px;background:white}
     .orient-item p{margin:5px 0 0}
+    /* Biblioteca de materiais académicos */
+.resource-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 20px;
+  margin-top: 25px;
+}
+
+.resource-card {
+  background: rgba(255,255,255,.94);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 24px;
+  transition: transform .3s ease, box-shadow .3s ease;
+}
+
+.resource-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 30px rgba(16,42,67,.13);
+}
+
+.resource-card .resource-icon {
+  font-size: 2rem;
+  margin-bottom: 12px;
+}
+
+.resource-card p {
+  color: var(--muted);
+  font-size: .93rem;
+}
+
+.resource-link {
+  display: inline-block;
+  margin-top: 8px;
+  color: var(--blue);
+  font-weight: 700;
+}
+
+.private-note {
+  border-left: 4px solid var(--accent);
+  padding: 15px 18px;
+  background: #fff8e9;
+  border-radius: 7px;
+  margin-top: 25px;
+}
+
+@media(max-width:850px) {
+  .resource-grid {
+    grid-template-columns: repeat(2, minmax(0,1fr));
+  }
+}
+
+@media(max-width:600px) {
+  .resource-grid {
+    grid-template-columns: 1fr;
+  }
+}
     .small{font-size:.9rem;color:var(--muted)}
     footer{background:var(--navy);color:#e9f0f5;padding:34px 0}
     footer a{color:#b9e2f0}
@@ -85,6 +142,9 @@
       <a href="#experience" data-pt="Experiência" data-en="Experience">Experiência</a>
       <a href="#publications" data-pt="Publicações" data-en="Publications">Publicações</a>
       <a href="#supervision" data-pt="Orientações" data-en="Supervision">Orientações</a>
+      <a href="#materials"
+   data-pt="Materiais"
+   data-en="Resources">Materiais</a>
       <a href="#locations" data-pt="Localização" data-en="Locations">Localização</a>
       <a href="#contact" data-pt="Contacto" data-en="Contact">Contacto</a>
       <button class="lang" id="langToggle" type="button" aria-label="Switch language">EN</button>
@@ -284,6 +344,86 @@
       </div>
     </div>
   </section>
+  <section id="materials">
+  <div class="wrap">
+
+    <h2 data-pt="Materiais e Recursos Académicos"
+        data-en="Academic Materials and Resources">
+      Materiais e Recursos Académicos
+    </h2>
+
+    <p class="section-intro"
+       data-pt="Nesta biblioteca disponibilizo materiais didáticos, recursos de investigação e ferramentas computacionais para estudantes, docentes e investigadores."
+       data-en="This library provides teaching materials, research resources and computational tools for students, lecturers and researchers.">
+      Nesta biblioteca disponibilizo materiais didáticos,
+      recursos de investigação e ferramentas computacionais
+      para estudantes, docentes e investigadores.
+    </p>
+
+    <div class="resource-grid">
+
+      <article class="resource-card">
+        <div class="resource-icon">📚</div>
+        <h3>Livros</h3>
+        <p>Livros de Matemática, Estatística, Probabilidade,
+        Econometria e outras áreas científicas.</p>
+        <span class="small">Materiais disponíveis em PDF.</span>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon">📝</div>
+        <h3>Listas de exercícios</h3>
+        <p>Listas de exercícios, fichas de trabalho,
+        problemas e resoluções comentadas.</p>
+        <span class="small">Recursos para estudantes.</span>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon">💻</div>
+        <h3>Códigos em R</h3>
+        <p>Scripts de R, simulações Monte Carlo,
+        análise estatística e modelação de dados.</p>
+        <span class="small">Códigos e exemplos computacionais.</span>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon">📄</div>
+        <h3>Artigos científicos</h3>
+        <p>Publicações científicas, manuscritos,
+        trabalhos de investigação e preprints.</p>
+        <span class="small">Produção científica.</span>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon">🎓</div>
+        <h3>Aulas e apresentações</h3>
+        <p>Apontamentos, apresentações, slides
+        e materiais de apoio às aulas.</p>
+        <span class="small">Materiais pedagógicos.</span>
+      </article>
+
+      <article class="resource-card">
+        <div class="resource-icon">📊</div>
+        <h3>Dados e aplicações</h3>
+        <p>Conjuntos de dados e exemplos de aplicações
+        de métodos estatísticos.</p>
+        <span class="small">Recursos para investigação.</span>
+      </article>
+
+    </div>
+
+    <div class="private-note">
+      <h3>🔒 Arquivo pessoal de certificados</h3>
+      <p>
+        Os certificados académicos e profissionais
+        são mantidos numa área privada, de acesso
+        exclusivo ao proprietário do website.
+        Não serão publicados nesta biblioteca.
+      </p>
+    </div>
+
+  </div>
+</section>
 
   <section id="contact">
     <div class="wrap">
