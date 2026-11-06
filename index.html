@@ -3,259 +3,262 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tiago Chandiona Franque | Dynamic Portfolio</title>
+    <title>Tiago Chandiona Franque</title>
     <!-- Biblioteca de Ícones Font Awesome -->
     <link rel="stylesheet" href="https://cloudflare.com">
     <style>
-        /* Animação do Fundo Vibrante */
-        @keyframes gradientBG {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
+        /* Tipografia e Base Estilo Quarto Academic */
         body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            /* Cores vibrantes em gradiente acorporado */
-            background: linear-gradient(-45deg, #0f172a, #1e3a8a, #3b82f6, #1d4ed8);
-            background-size: 400% 400%;
-            animation: gradientBG 15s ease infinite;
-            color: #f1f5f9;
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #ffffff;
+            color: #212529;
             margin: 0;
-            padding: 40px 20px;
+            padding: 0;
+            line-height: 1.6;
+        }
+
+        /* Barra de Navegação Superior (Idêntica à do Quarto) */
+        .navbar {
+            background-color: #ffffff;
+            border-bottom: 1px solid #e9ecef;
+            padding: 12px 20px;
+            sticky: top;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
             display: flex;
-            justify-content: center;
-            min-height: 100vh;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .navbar-brand {
+            font-weight: 600;
+            color: #212529;
+            text-decoration: none;
+            font-size: 1.1em;
+        }
+        .navbar-nav {
+            display: flex;
+            gap: 20px;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-link {
+            color: #6c757d;
+            text-decoration: none;
+            font-size: 0.95em;
+            font-weight: 500;
+            transition: color 0.2s;
+        }
+        .nav-link:hover {
+            color: #0f766e; /* Tom teal académico escuro */
         }
 
-        .container {
-            background: rgba(255, 255, 255, 0.95);
-            color: #1e293b;
-            padding: 50px;
-            border-radius: 24px;
-            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
-            max-width: 750px;
-            width: 100%;
-            backdrop-filter: blur(10px);
-            transition: all 0.3s ease;
+        /* Contentor Principal do Layout */
+        .main-content {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
 
-        /* Suporte automático ao Modo Escuro do Sistema */
-        @media (prefers-color-scheme: dark) {
-            .container {
-                background: rgba(15, 23, 42, 0.95);
-                color: #f1f5f9;
-                box-shadow: 0 20px 40px rgba(59, 130, 246, 0.2);
+        /* Grid de Duas Colunas da Secção "About Me" */
+        .about-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 40px;
+            align-items: start;
+            margin-bottom: 60px;
+        }
+
+        @media (max-width: 768px) {
+            .about-grid {
+                grid-template-columns: 1fr;
+                text-align: center;
             }
-            .item { background: rgba(30, 41, 59, 0.5); }
-            .item-titulo { color: #f8fafc !important; }
-            h2 { border-bottom: 2px solid #3b82f6 !important; }
+            .perfil-col {
+                order: -1;
+            }
         }
 
-        /* Foto e Cabeçalho com Brilho Vibrante */
-        .perfil {
-            text-align: center;
-            margin-bottom: 40px;
+        /* Elementos Biográficos */
+        h1.nome-principal {
+            font-size: 2.5em;
+            font-weight: 700;
+            color: #111827;
+            margin: 0 0 10px 0;
         }
-        .perfil img {
-            width: 150px;
-            height: 150px;
+        h3.cargo-principal {
+            font-size: 1.3em;
+            font-weight: 400;
+            color: #4b5563;
+            margin: 0 0 25px 0;
+        }
+        .bio-texto p {
+            color: #374151;
+            font-size: 1.05em;
+            margin-bottom: 20px;
+            text-align: justify;
+        }
+
+        /* Foto de Perfil Arredondada Estilo Quarto */
+        .perfil-col {
+            text-align: center;
+        }
+        .perfil-col img {
+            width: 200px;
+            height: 200px;
             border-radius: 50%;
             object-fit: cover;
-            border: 4px solid #3b82f6;
-            box-shadow: 0 0 20px rgba(59, 130, 246, 0.6);
-            transition: transform 0.5s ease;
-        }
-        .perfil img:hover {
-            transform: scale(1.05) rotate(3deg);
-        }
-        h1 {
-            color: #1e3a8a;
-            margin: 20px 0 5px 0;
-            font-size: 2.5em;
-            font-weight: 800;
-            letter-spacing: -0.5px;
-        }
-        @media (prefers-color-scheme: dark) {
-            h1 { color: #3b82f6; }
-        }
-        .subtitulo {
-            color: #64748b;
-            font-size: 1.3em;
-            font-weight: 600;
-            margin-bottom: 20px;
+            border: 1px solid #e5e7eb;
         }
 
-        /* Estatísticas Automatizadas (Dashboard) */
-        .dashboard-stats {
-            display: flex;
-            justify-content: space-around;
-            background: #eff6ff;
-            padding: 15px;
-            border-radius: 12px;
-            margin-bottom: 30px;
-            border: 1px solid #bfdbfe;
-        }
-        @media (prefers-color-scheme: dark) {
-            .dashboard-stats {
-                background: #1e293b;
-                border: 1px solid #334155;
-            }
-        }
-        .stat-card {
-            text-align: center;
-        }
-        .stat-value {
-            font-size: 1.6em;
-            font-weight: 700;
-            color: #2563eb;
-        }
-
-        /* Secções Animadas */
-        h2 {
-            color: #1e3a8a;
-            border-bottom: 2px solid #cbd5e1;
-            padding-bottom: 10px;
-            margin-top: 45px;
-            font-size: 1.6em;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        @media (prefers-color-scheme: dark) {
-            h2 { color: #60a5fa; }
-        }
-        
-        /* Items Automatizados e Interativos */
-        .item {
-            margin-bottom: 25px;
-            padding: 20px;
-            border-left: 4px solid #2563eb;
-            background: #f8fafc;
-            border-radius: 0 12px 12px 0;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        .item:hover {
-            transform: translateX(5px) translateY(-2px);
-            background: #f0fdf4;
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.05);
-            border-left-color: #10b981;
-        }
-        @media (prefers-color-scheme: dark) {
-            .item:hover { background: #1e293b; }
-        }
-        .item-titulo {
-            font-weight: 700;
-            color: #0f172a;
-            margin: 0;
-            font-size: 1.2em;
-        }
-        .item-detalhes {
-            font-size: 0.95em;
-            color: #64748b;
-            margin: 6px 0 12px 0;
-            font-style: italic;
-            display: flex;
-            align-items: center;
-            gap: 6px;
-        }
-
-        /* Botões Vibrantes com Efeitos de Pulso */
-        .redes-sociais {
-            text-align: center;
-            margin-top: 40px;
-        }
-        .botao-rede {
+        /* Botão de Ação "Download CV" */
+        .btn-cv {
             display: inline-block;
-            margin: 8px;
-            padding: 14px 28px;
-            background-color: #2563eb;
-            color: white;
+            padding: 8px 16px;
+            border: 1px solid #0f766e;
+            color: #0f766e;
             text-decoration: none;
-            border-radius: 12px;
-            font-weight: 600;
-            font-size: 1em;
-            box-shadow: 0 4px 14px rgba(37, 99, 235, 0.4);
+            border-radius: 6px;
+            font-weight: 500;
+            font-size: 0.95em;
+            margin-top: 15px;
             transition: all 0.2s ease;
         }
-        .botao-rede i {
-            margin-right: 8px;
+        .btn-cv:hover {
+            background-color: #0f766e;
+            color: #ffffff;
         }
-        .botao-rede:hover {
-            background-color: #1d4ed8;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 20px rgba(29, 78, 216, 0.6);
+
+        /* Cabeçalhos de Secções Estruturadas */
+        h2.seccao-titulo {
+            font-size: 1.6em;
+            font-weight: 600;
+            color: #111827;
+            margin-top: 50px;
+            margin-bottom: 25px;
+            border-bottom: 1px solid #e5e7eb;
+            padding-bottom: 8px;
+        }
+
+        /* Itens de Portfólio / Linha Cronológica Limpa */
+        .academic-item {
+            margin-bottom: 30px;
+            padding-bottom: 20px;
+            border-bottom: 1px solid #f3f4f6;
+        }
+        .academic-item:last-child {
+            border-bottom: none;
+        }
+        .item-meta {
+            font-size: 0.9em;
+            color: #6b7280;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        .item-header {
+            font-size: 1.2em;
+            font-weight: 600;
+            color: #0f766e;
+            margin: 0 0 5px 0;
+        }
+        .item-sub {
+            font-size: 1em;
+            font-weight: 500;
+            color: #374151;
+            margin-bottom: 10px;
+        }
+        .academic-item p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 0.98em;
+        }
+
+        /* Rodapé Fixo */
+        footer {
+            text-align: center;
+            padding: 40px 20px;
+            border-top: 1px solid #e9ecef;
+            color: #9ca3af;
+            font-size: 0.85em;
+            margin-top: 60px;
         }
     </style>
 </head>
 <body>
 
-    <div class="container">
-        <!-- 1. CABEÇALHO PRINCIPAL -->
-        <div class="perfil">
-            <img src="20261021_170459.jpg" alt="Tiago Chandiona Ernesto Franque">
-            <h1>Tiago Chandiona Ernesto Franque</h1>
-            <p class="subtitulo">Professor of Statistics and Probability</p>
-            <p>I am a Professor of Statistics and Probability from Mozambique, specializing in advanced research and the development of estimation models tailored to optimize management and decision-making systems. Regression Analysis is my core area of expertise.</p>
-        </div>
+    <!-- BARRA DE NAVEGAÇÃO SUPERIOR -->
+    <nav class="navbar">
+        <a class="navbar-brand" href="#">Tiago Chandiona Franque</a>
+        <ul class="navbar-nav">
+            <li><a class="nav-link" href="#about">Home</a></li>
+            <li><a class="nav-link" href="#research">Research</a></li>
+            <li><a class="nav-link" href="#teaching">Teaching</a></li>
+            <li><a class="nav-link" href="#events">Events</a></li>
+            <li><a class="nav-link" href="#advising">Advising</a></li>
+        </ul>
+    </nav>
 
-        <!-- DASHBOARD AUTOMATIZADO -->
-        <div class="dashboard-stats">
-            <div class="stat-card">
-                <!-- Calculado automaticamente via JavaScript abaixo -->
-                <div class="stat-value" id="anos-experiencia">11+</div>
-                <div style="font-size: 0.85em; font-weight: 500;">Anos Académicos</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">3+</div>
-                <div style="font-size: 0.85em; font-weight: 500;">Modelos de Tese</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-value">UFMG</div>
-                <div style="font-size: 0.85em; font-weight: 500;">Investigação Atual</div>
-            </div>
-        </div>
-
-        <!-- 2. PERCURSO ACADÉMICO -->
-        <h2><i class="fas fa-graduation-cap"></i> Percurso Académico</h2>
+    <!-- CONTEÚDO PRINCIPAL EM COLUNA ACADÉMICA -->
+    <div class="main-content">
         
-        <div class="item">
-            <p class="item-titulo">B.Sc. in Mathematics and Physics</p>
-            <p class="item-detalhes"><i class="far fa-calendar-alt"></i> Universidade Pedagógica de Moçambique | 2010 - 2013</p>
-            <p>Graduated with distinction in core research areas, including Mathematical Analysis, Geometry, and Introductory Probability. Developed a final graduation project titled <em>"Application of Homotheties in Real Life"</em>.</p>
-        </div>
+        <!-- SECÇÃO PRINCIPAL: ABOUT ME -->
+        <section id="about" class="about-grid">
+            <div class="bio-col">
+                <h1 class="nome-principal">Alex Monito Nhancololo Layout Adap.</h1>
+                <h1 class="nome-principal" style="font-size: 2.3em; color: #111827;">Tiago Chandiona Ernesto Franque</h1>
+                <h3 class="cargo-principal">Ph.D. candidate in Statistics and Probability</h3>
+                
+                <div class="bio-texto">
+                    <p>T. C. E. Franque is a Ph.D. candidate in Statistics and Probability at the Federal University of Minas Gerais (UFMG). His advanced academic research involves proposing structural estimation models designed to optimize decision-making and strategic management systems.</p>
+                    <p>He holds an M.Sc. in Statistics and Probability from the University of Brasília (UnB), where he specialized in core fields such as Statistical Inference, Mathematical Statistics, and Survival Analysis. He completed his Bachelor's degree in Mathematics and Physics from the Universidade Pedagógica de Moçambique.</p>
+                    <p>His primary methodological expertise lies within Regression Analysis, spatio-temporal architectures, and formulation of discrete survival data models with censoring configurations.</p>
+                </div>
+                
+                <!-- Ligação para o Currículo Lattes como botão principal de download -->
+                <a href="https://cnpq.br" target="_blank" class="btn-cv">
+                    <i class="fas fa-file-pdf"></i> Access CV (Lattes)
+                </a>
+            </div>
+            
+            <div class="perfil-col">
+                <img src="20261021_170459.jpg" alt="Tiago Chandiona Ernesto Franque">
+            </div>
+        </section>
 
-        <div class="item">
-            <p class="item-titulo">M.Sc. in Statistics and Probability</p>
-            <p class="item-detalhes"><i class="far fa-calendar-alt"></i> University of Brasília (UnB) | 2021 - 2023</p>
-            <p>Specialized in Statistical Inference, Mathematical Statistics, and Survival Analysis. Authored the master's dissertation: <em>"Proportional Survival Logistic Regression Models for Discrete Data in the Presence of Censoring"</em>.</p>
-        </div>
+        <!-- SECÇÃO: RESEARCH & PUBLICATIONS -->
+        <section id="research">
+            <h2 class="seccao-titulo">Research & Publications</h2>
+            
+            <div class="academic-item">
+                <div class="item-meta">Tese de Doutoramento (Em Curso) · UFMG</div>
+                <div class="item-header">M-quantile Regression Estimator for Periodic Spatio-Temporal Poisson-INGARCH Models for Count Data</div>
+                <p>Developing a robust estimator designed for real-world scenarios to model complex epidemiological patterns, specifically mapping malaria and dengue fever spatial-temporal case distributions.</p>
+            </div>
 
-        <div class="item">
-            <p class="item-titulo">Ph.D. Candidate in Statistics and Probability</p>
-            <p class="item-detalhes"><i class="far fa-calendar-alt"></i> Federal University of Minas Gerais (UFMG) | Atual</p>
-            <p>Currently developing doctoral thesis research titled: <em>"M-quantile Regression Estimator for Periodic Spatio-Temporal Poisson-INGARCH Models for Count Data"</em>.</p>
-        </div>
-        
-        <!-- 3. PERCURSO PROFISSIONAL -->
-        <h2><i class="fas fa-briefcase"></i> Percurso Profissional</h2>
+            <div class="academic-item">
+                <div class="item-meta">Dissertação de Mestrado (2023) · UnB</div>
+                <div class="item-header">Proportional Survival Logistic Regression Models for Discrete Data in the Presence of Censoring</div>
+                <p>Formulated discrete survival methodology frameworks centered around processing heavily censored mathematical and statistical datasets using optimized logistics formats.</p>
+            </div>
 
-        <div class="item">
-            <p class="item-titulo">University Professor</p>
-            <p class="item-detalhes"><i class="far fa-calendar-alt"></i> Federal University of Minas Gerais (UFMG) | 2025 - 2026</p>
-            <p>Lecturer of Statistics and Probability modules for undergraduate programs in Geography, Computer Engineering, and Automation & Systems Engineering.</p>
-        </div>
+            <div class="academic-item">
+                <div class="item-meta">Monografia de Licenciatura (2013) · UP</div>
+                <div class="item-header">Application of Homotheties in Real Life</div>
+                <p>An investigation correlating geometric principles—Thales' theorem, triangle congruency, and similarity indices—with spatial entity metrics in human survival dynamics.</p>
+            </div>
+        </section>
 
-        <div class="item">
-            <p class="item-titulo">University Professor</p>
-            <p class="item-detalhes"><i class="far fa-calendar-alt"></i> Universidade Save (UniSave) | 2021 - 2026</p>
-            <p>Lecturer within the Department of Mathematics and Statistics – Faculty of Natural Sciences and Mathematics (FCNE).</p>
-        </div>
+        <!-- SECÇÃO: TEACHING -->
+        <section id="teaching">
+            <h2 class="seccao-titulo">Teaching</h2>
+            
+            <div class="academic-item">
+                <div class="item-meta">2025 - 2026 · Federal University of Minas Gerais</div>
+                <div class="item-header">University Professor</div>
+                <div class="item-sub">Undergraduate Modules</div>
+                <p>Lecturer responsible for Probability and Statistics curricula within the fields of Geography, Computer Engineering, and Automation & Systems Engineering.</p>
+            </div>
 
-        <!-- 4. CONGRESSOS -->
-        <h2><i class="fas fa-users-viewfinder"></i> Conferences & Events</h2>
-
-        <div class="item">
-            <p class="item-titulo">26º Simpósio Nacional de Probabilidade e Estatística (SINAPE)</p>
+            <div class="academic-item">
+                <div class="item-meta">2021 - 2026 · Universidade Save (UniSave)</div>
